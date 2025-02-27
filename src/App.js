@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import "./App.scss";
+import axios from "axios";
 function App() {
+  const access_key = "RxSkDMNq1tDaGaRE9ZfVswWJi2BGTryMvTEZrixsa8o";
+  const [images, setImages] = useState([]);
+  const imageCount = 5; // Số lượng ảnh muốn lấy
+  const query = "nature"; // Chủ đề ảnh (thiên nhiên)
+  useEffect(() => {
+    async function getImage() {
+      try {
+        const response = await axios.get(
+          `https://api.unsplash.com/search/photos?query=${query}&per_page=${imageCount}`,
+          {
+            headers: {
+              Authorization: `Client-ID ${access_key}`,
+            },
+          }
+        );
+        if (response.data.results) {
+          setImages(response.data.results);
+        }
+      } catch (error) {
+        console.log("lỗi nè" + error);
+      }
+    }
+    getImage();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {images.length > 0 &&
+        images.map((img, index) => (
+          <img key={index} src={img.urls.regular} alt={`Ảnh ${index + 1}`} />
+        ))}
     </div>
   );
 }
