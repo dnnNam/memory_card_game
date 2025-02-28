@@ -14,10 +14,12 @@ Cards.defaultProps = {
 function Cards(props) {
   const { cards } = props;
   const [flippedCards, setFlippedCards] = useState([]); // lưu nhưng state đã lật
+
   const duplicatedCards = [...cards, ...cards].map((card, index) => ({
     ...card,
     uniqueId: `${card.id}-${index}`, // ID duy nhất để tránh lỗi React key
     originalId: card.id, // ID gốc để so sánh khi chơi
+    isFlipped: false, // mặc định lúc đầu chưa lật
   }));
 
   const shuffledCards = duplicatedCards.sort(() => Math.random() - 0.5);
@@ -28,7 +30,12 @@ function Cards(props) {
       <h1 className="title">
         Memory Card Game In <span className="react_element">React</span>
       </h1>
-      <Card Cards={shuffledCards} />
+      <div className="board">
+        {shuffledCards.slice(0, 10).map((card) => (
+          <Card Card={card} isFlipped={card.isFlipped} />
+        ))}
+      </div>
+
       <button className="reset">Reset</button>
     </div>
   );
