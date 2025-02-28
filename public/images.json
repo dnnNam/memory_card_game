@@ -1,0 +1,24 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "src": "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg"
+    },
+    {
+      "id": 2,
+      "src": "https://images.pexels.com/photos/34950/pexels-photo.jpg"
+    },
+    {
+      "id": 3,
+      "src": "https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg"
+    },
+    {
+      "id": 4,
+      "src": "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg"
+    },
+    {
+      "id": 5,
+      "src": "https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg"
+    }
+  ]
+}

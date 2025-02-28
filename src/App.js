@@ -1,26 +1,25 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
 import axios from "axios";
-import Cards from "./components/memoryCard/Cards";
+import Cards from "./components/memoryCards/Cards";
 
 function App() {
-  const access_key = "RxSkDMNq1tDaGaRE9ZfVswWJi2BGTryMvTEZrixsa8o";
+  // const access_key = "JsrkR2MnSnVEzM5iq1hLoLokZaslyzS2MAFgr6xQ86lNMs2FyWzKe51J";
   const [images, setImages] = useState([]);
-  const imageCount = 6; // Số lượng ảnh muốn lấy
-  const query = "nature"; // Chủ đề ảnh (thiên nhiên)
+  // const imageCount = 6; // Số lượng ảnh muốn lấy
+  // const query = "nature"; // Chủ đề ảnh (thiên nhiên)
   useEffect(() => {
     async function getImage() {
       try {
         const response = await axios.get(
-          `https://api.unsplash.com/search/photos?query=${query}&per_page=${imageCount}`,
-          {
-            headers: {
-              Authorization: `Client-ID ${access_key}`,
-            },
-          }
+          `/images.json`
+          // headers: {
+          //   Authorization: `${access_key}`,
+          // },
         );
-        if (response.data.results) {
-          setImages(response.data.results);
+        // console.log("Full API response:", response.data); // Kiểm tra toàn bộ response
+        if (response.data.photos) {
+          setImages(response.data.photos || []);
         }
       } catch (error) {
         console.log("lỗi nè" + error);
@@ -29,11 +28,7 @@ function App() {
     getImage();
   }, []);
 
-  return (
-    <div className="App">
-      <Cards cards={images} />
-    </div>
-  );
+  return <div className="App">{<Cards cards={images} />}</div>;
 }
 
 export default App;
