@@ -1,7 +1,7 @@
 .boxes {
   height: 140px;
   width: 100px;
-  background: #1f3540;
+
   border: 4px solid #0f1b21;
   border-radius: 12px;
   cursor: pointer;
@@ -12,13 +12,13 @@
   width: 100%;
   height: 100%;
   position: relative;
-  transform-style: preserve-3d; // giữ lại trạng thái 3-d
+  transform-style: preserve-3d; /* giữ lại trạng thái 3-d */
   transition: transform 0.6s;
-  transform: rotateY(0deg); // Mặc định úp xuống
+  transform: rotateY(180deg); /* Mặc định úp xuống */
 }
 
 .boxes.isFlipped .card-inner {
-  transform: rotateY(180deg); // mặt trước xoay
+  transform: rotateY(0deg); // mặt trước xoay
 }
 
 .card-front,
@@ -32,13 +32,15 @@
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.card-front {
-  z-index: 2;
+  background: none;
 }
 
 .card-back {
-  z-index: 1;
   transform: rotateY(180deg);
+}
+
+.mg_back {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo ảnh lấp đầy mà không méo */
 }

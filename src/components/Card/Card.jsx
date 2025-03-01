@@ -36,7 +36,7 @@ function Card(props) {
           </div>
 
           <div className="card-back">
-            <img src={card} alt="ảnh sau" />
+            <img className="img_back" src={card} alt="ảnh sau" />
           </div>
         </div>
       </div>
