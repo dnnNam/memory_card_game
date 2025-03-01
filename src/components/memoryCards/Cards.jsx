@@ -32,7 +32,7 @@ function Cards(props) {
       </h1>
       <div className="board">
         {shuffledCards.slice(0, 10).map((card) => (
-          <Card Card={card} isFlipped={card.isFlipped} />
+          <Card CardData={card} />
         ))}
       </div>
 

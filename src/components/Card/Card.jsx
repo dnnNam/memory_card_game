@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Card.scss";
+import classNames from "classnames";
+import card from "../../assets/images/224ac29f-aa67-413a-b60f-332b395d6fff-removebg-preview.png";
 
 Card.propTypes = {
-  Card: PropTypes.object,
-  isFlipped: PropTypes.bool,
+  CardData: PropTypes.object,
   onClick: PropTypes.func,
 };
 
 Card.defaultProps = {
-  Card: null,
-  isFlipped: false,
+  CardData: null,
   onClick: null,
 };
+
 function Card(props) {
-  const { Card, isFlipped, onClick } = props;
+  const { CardData, onClick } = props;
+  const [isFlipped, setIsFlipped] = useState(CardData.isFlipped);
+  const cardClass = classNames("boxes", {
+    isFlipped,
+  });
+
+  function handleChange() {
+    setIsFlipped(true);
+
+    if (!onClick) return;
+    onClick(CardData);
+  }
   return (
     <div>
-      <div key={Card.uniqueId} className="boxes">
-        <img src={Card.src} alt="Hình ảnh thiên nhiên"></img>
+      <div className={cardClass} onClick={() => handleChange(CardData)}>
+        <div className="card-inner" key={CardData.uniqueId}>
+          <div className="card-front">
+            <img src={CardData.src} alt="Hình ảnh thiên nhiên"></img>
+          </div>
+
+          <div className="card-back">
+            <img src={card} alt="ảnh sau" />
+          </div>
+        </div>
       </div>
     </div>
   );
