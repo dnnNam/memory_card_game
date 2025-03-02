@@ -45,7 +45,7 @@ function Cards(props) {
     setFlippedCards((prev) => {
       const newFlippedCards = [...prev, CardData];
       // nếu đã có 2 thẻ click thì  kiểm tra
-      if (newFlippedCards.length == 2) {
+      if (newFlippedCards.length === 2) {
         setTimeout(() => {
           checkMatched(newFlippedCards[0], newFlippedCards[1]);
         }, 500); // Để đảm bảo React có thời gian render cả hai thẻ trước khi kiểm tra
@@ -96,6 +96,7 @@ function Cards(props) {
               flippedCards.find(
                 (Flipped) => Flipped.uniqueId === card.uniqueId
               ) || matchedCard.includes(card.originalId)
+              // nếu như mà có click thì trả về true hoặc các card đã khợp trả về true
             }
             onClick={handleChange}
           />
