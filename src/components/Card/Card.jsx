@@ -5,25 +5,24 @@ import classNames from "classnames";
 import card from "../../assets/images/224ac29f-aa67-413a-b60f-332b395d6fff-removebg-preview.png";
 
 Card.propTypes = {
-  CardData: PropTypes.object,
-  onClick: PropTypes.func,
+  CardData: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isFlipped: PropTypes.bool.isRequired,
 };
 
 Card.defaultProps = {
   CardData: null,
   onClick: null,
+  isFlipped: false,
 };
 
 function Card(props) {
-  const { CardData, onClick } = props;
-  const [isFlipped, setIsFlipped] = useState(CardData.isFlipped);
+  const { CardData, onClick, isFlipped } = props;
   const cardClass = classNames("boxes", {
     isFlipped,
   });
 
   function handleChange() {
-    setIsFlipped(true);
-
     if (!onClick) return;
     onClick(CardData);
   }

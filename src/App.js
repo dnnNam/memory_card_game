@@ -27,6 +27,7 @@ function App() {
     }
     getImage();
   }, []);
+  // console.log(images);
 
   return <div className="App">{<Cards cards={images} />}</div>;
 }

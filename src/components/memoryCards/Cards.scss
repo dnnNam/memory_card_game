@@ -16,9 +16,9 @@
   padding-left: 15px;
 }
 
-.reset {
-  width: 250px;
-  height: 100px;
+.reset-btn {
+  width: 200px;
+  height: 80px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -26,8 +26,11 @@
   background: #1f3540;
   font-size: 26px;
   color: #26ffcb;
-  margin-top: 25px;
-  margin-bottom: 50px;
+}
+
+.reset {
+  position: absolute;
+  left: 40%;
 }
 
 .boxes img {
@@ -44,6 +47,7 @@
   width: fit-content; /* Để vừa với số ảnh */
   margin: 0 auto; /* Căn giữa toàn bộ */
   padding: 20px; /* Thêm padding nếu cần */
+  position: relative;
 }
 
 .row {
